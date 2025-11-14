@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XML & Sitemap Fixation Plans</title>
+  <style>
+    * {margin:0;padding:0;box-sizing:border-box;}
+    body {
+      font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;
+      background:linear-gradient(135deg,#001f3f 0%,#000814 100%);
+      color:#fff;min-height:100vh;padding:20px;
+    }
+    .container {max-width:1200px;margin:0 auto;}
+    header {text-align:center;padding:60px 20px 40px;}
+    h1 {font-size:2.5rem;margin-bottom:20px;font-weight:700;}
+    .subtitle {font-size:1.2rem;opacity:0.9;max-width:700px;margin:0 auto;line-height:1.6;}
+    .plans {display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;padding:40px 20px;}
+    .plan-card {
+      background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);
+      border-radius:20px;padding:40px 30px;text-align:center;
+      border:2px solid rgba(255,255,255,0.2);
+      transition:transform 0.3s ease,box-shadow 0.3s ease;
+    }
+    .plan-card:hover {transform:translateY(-10px);box-shadow:0 20px 40px rgba(0,0,0,0.3);}
+    .plan-name {font-size:1.8rem;margin-bottom:20px;font-weight:600;}
+    .price {font-size:3rem;font-weight:700;margin:20px 0;}
+    .price::before {content:'$';font-size:2rem;vertical-align:super;}
+    .features {text-align:left;margin:20px 0 10px;line-height:1.8;}
+    .features li {margin-left:20px;list-style-type:disc;}
+    .btn {
+      background:#fff;color:#001f3f;padding:15px 40px;border-radius:50px;
+      text-decoration:none;display:inline-block;margin-top:20px;font-weight:600;
+      transition:all 0.3s ease;
+    }
+    .btn:hover {background:#f0f0f0;transform:scale(1.05);}
+    .faq-section {padding:60px 20px;}
+    .faq-title {text-align:center;font-size:2.5rem;margin-bottom:50px;font-weight:700;}
+    .faq-container {max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:20px;}
+    .faq-card {
+      background:linear-gradient(135deg,#ADD8E6 0%,#87CEEB 100%);
+      border-radius:15px;padding:30px;box-shadow:0 10px 30px rgba(0,0,0,0.2);
+      transition:transform 0.3s ease;
+    }
+    .faq-card:hover {transform:translateX(10px);}
+    .faq-question {font-size:1.3rem;font-weight:600;color:#1a1a1a;margin-bottom:15px;}
+    .faq-answer {font-size:1rem;line-height:1.6;color:#2c2c2c;}
+    @media(max-width:768px){
+      h1{font-size:2rem;}
+      .subtitle{font-size:1rem;}
+      .plans{grid-template-columns:1fr;}
+      .faq-title{font-size:2rem;}
+    }
+
+    /* Modal Styles */
+    .modal {
+      display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;
+      background-color:rgba(0,0,0,0.7);justify-content:center;align-items:center;
+    }
+    .modal-content {
+      background:#fff;color:#000;border-radius:15px;padding:30px;max-width:400px;width:90%;
+      text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    }
+    .modal-content h3 {margin-bottom:10px;}
+    .modal-content p {font-size:0.9rem;margin-bottom:20px;color:#333;}
+    .modal-content input {
+      width:100%;padding:12px;border-radius:8px;border:1px solid #ccc;margin-bottom:20px;
+    }
+    .modal-content button {
+      background:#001f3f;color:#fff;padding:12px 30px;border:none;border-radius:30px;
+      font-weight:600;cursor:pointer;transition:0.3s;
+    }
+    .modal-content button:hover {background:#003366;}
+    .close-btn {position:absolute;top:20px;right:30px;font-size:30px;color:#fff;cursor:pointer;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>XML & Sitemap Fixation Plans</h1>
+      <p class="subtitle">Ensure your Shopify store is properly indexed, visible, and compliant with search protocols.</p>
+    </header>
+
+    <section class="plans">
+      <div class="plan-card">
+        <div class="plan-name">1-Year Plan</div>
+        <div class="price">163</div>
+        <ul class="features">
+          <li>XML & sitemap regeneration</li>
+          <li>Basic error and tag fixes</li>
+          <li>Reindexing verification</li>
+        </ul>
+        <a href="#" class="btn" onclick="openModal('1-Year Plan')">Get Started</a>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-name">2-Years Plan</div>
+        <div class="price">280</div>
+        <ul class="features">
+          <li>Full XML & sitemap restructuring</li>
+          <li>Ongoing updates and monthly reports</li>
+          <li>Monitoring & ranking insight</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="#" class="btn" onclick="openModal('2-Year Plan')">Get Started</a>
+      </div>
+
+      <div class="plan-card">
+        <div class="plan-name">5-Year Plan</div>
+        <div class="price">446</div>
+        <ul class="features">
+          <li>Lifetime XML/sitemap maintenance</li>
+          <li>Advanced SEO compliance monitoring</li>
+          <li>Yearly visibility optimization</li>
+          <li>24/7 technical support</li>
+        </ul>
+        <a href="#" class="btn" onclick="openModal('5-Year Plan')">Get Started</a>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <h2 class="faq-title">Frequently Asked Questions</h2>
+      <div class="faq-container">
+        <div class="faq-card">
+          <div class="faq-question">Why is my Shopify store not showing up in search?</div>
+          <div class="faq-answer">This often happens due to missing tags, incorrect URLs, or outdated media paths. It can also occur if your store's XML wasn't regenerated after theme customization or product uploads.</div>
+        </div>
+
+        <div class="faq-card">
+          <div class="faq-question">Can this really fix my indexing issues?</div>
+          <div class="faq-answer">Yes — once your XML and sitemap are restructured properly, your store regains visibility and credibility with search engines. That directly improves discoverability and organic traffic.</div>
+        </div>
+
+        <div class="faq-card">
+          <div class="faq-question">What happens after my plan expires?</div>
+          <div class="faq-answer">Each plan includes ongoing support for the duration stated. After that, you can renew or upgrade at any time.</div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Modal -->
+  <div id="emailModal" class="modal">
+    <span class="close-btn" onclick="closeModal()">&times;</span>
+    <div class="modal-content">
+      <h3>Enter Your Email</h3>
+      <p>This email will be used to send your invoice.</p>
+      <input type="email" id="userEmail" placeholder="your@email.com" required />
+      <button onclick="sendToWhatsApp()">Proceed</button>
+    </div>
+  </div>
+
+  <script>
+    let selectedPlan = '';
+
+    function openModal(plan) {
+      selectedPlan = plan;
+      document.getElementById('emailModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('emailModal').style.display = 'none';
+      document.getElementById('userEmail').value = '';
+    }
+
+    function sendToWhatsApp() {
+      const email = document.getElementById('userEmail').value.trim();
+      if (!email) {
+        alert('Please enter your email to continue.');
+        return;
+      }
+      const phone = '2347015764115'; // your WhatsApp number
+      const message = `Hello, I'm interested in the XML & Sitemap Fixation – ${selectedPlan}. My email is ${email}. Please send my invoice.`;
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+      closeModal();
+    }
+
+    window.onclick = function(event) {
+      const modal = document.getElementById('emailModal');
+      if (event.target == modal) closeModal();
+    }
+  </script>
+</body>
+</html>
